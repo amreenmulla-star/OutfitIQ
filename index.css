@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0a0a0a;
+  --color-bg-elevated: #121212;
+  --color-bg-card: #161616;
+  --color-bg-card-hover: #1c1c1c;
+  --color-border: #2a2a2a;
+  --color-border-subtle: #1f1f1f;
+  --color-text: #f5f5f0;
+  --color-text-muted: #a3a39a;
+  --color-text-dim: #6b6b63;
+  --color-accent: #b8f200;
+  --color-accent-dim: #8fbf00;
+  --color-accent-glow: rgba(184, 242, 0, 0.15);
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-display: "Outfit", "Inter", system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    @apply bg-[var(--color-bg)] text-[var(--color-text)] font-sans antialiased;
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+  }
+
+  ::selection {
+    background: var(--color-accent-glow);
+    color: var(--color-accent);
+  }
+}
+
+@layer utilities {
+  .glass {
+    background: rgba(22, 22, 22, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--color-border-subtle);
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, #f5f5f0 0%, #b8f200 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .accent-glow {
+    box-shadow: 0 0 40px var(--color-accent-glow);
+  }
+}
